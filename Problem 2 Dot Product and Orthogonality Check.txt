@@ -1,0 +1,22 @@
+def dot_product(v1, v2):
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    
+    result = 0
+    for i in range(len(v1)):
+        result += v1[i] * v2[i]
+    
+    return result
+
+def check_orthogonality(vectors):
+    n = len(vectors)
+    for i in range(n):
+        for j in range(i+1, n):
+            if dot_product(vectors[i], vectors[j]) == 0:
+                print("Vectors {} and {} are orthogonal".format(i+1, j+1))
+            else:
+                print("Vectors {} and {} are not orthogonal".format(i+1, j+1))
+
+# Example usage
+vectors = [[1, 0, 2], [0, -1, 0], [3, 4, 0]]
+check_orthogonality(vectors)
